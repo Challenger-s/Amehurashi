@@ -20,19 +20,13 @@ public class RainChange : MonoBehaviour
     void Update()
     {
         float vertical = Input.GetAxis("5th axis");
+        var emission = particleSystem.emission;
+        emission.rateOverTime = 0;
 
         if (Input.GetButton("RB"))
         {
-            var emission = particleSystem.emission;
-            if (vertical == 0)
-            {
-                emission.rateOverTime = 0;
-            }
-
             rainfall = -vertical * 60;
             emission.rateOverTime = rainfall;
-         
-
         }
     }
 
