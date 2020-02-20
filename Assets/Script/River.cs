@@ -7,7 +7,7 @@ public class River : MonoBehaviour
     ParticleSystem particleSystem;
 
     [SerializeField]
-    RainChange rainChange;
+    RainChanger rainChange;
 
     bool riverON = false;
 

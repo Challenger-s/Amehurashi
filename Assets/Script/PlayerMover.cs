@@ -5,7 +5,7 @@ using UnityEngine;
 // 段差をのぼる処理は仮
 // アニメーションができたら変更
 
-public class CharacterMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField]
     float accel = 10f;       // 加速度
@@ -51,7 +51,6 @@ public class CharacterMover : MonoBehaviour
         float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
         float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
         transform.Translate(0,0,speed);        //　移動
-        Debug.Log(this.gameObject.transform.forward);
 
         if (step)
         {

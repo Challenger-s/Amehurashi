@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaterSurface : MonoBehaviour
 {
     [SerializeField]
-    RainChange rainChange;
+    RainChanger rainChange;
 
     bool riverON = false;
 
@@ -20,7 +20,6 @@ public class WaterSurface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(riverON);
         if (riverON)
         {
             if (rainChange.Rainfall() > 59)

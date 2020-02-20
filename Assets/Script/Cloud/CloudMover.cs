@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudMove : MonoBehaviour
+public class CloudMover : MonoBehaviour
 {
     float Xspeed;
     float Zspeed;

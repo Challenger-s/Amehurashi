@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RainChange : MonoBehaviour
+public class RainChanger : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem particleSystem;
@@ -30,9 +30,7 @@ public class RainChange : MonoBehaviour
             }
 
             rainfall = -vertical * 60;
-            emission.rateOverTime = rainfall;
-         
-
+            emission.rateOverTime = rainfall;      
         }
     }
 
