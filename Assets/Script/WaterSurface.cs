@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaterSurface : MonoBehaviour
 {
     [SerializeField]
-    RainChange rainChange;
+    RainChanger rainChanger;
 
     bool riverON = false;
 
@@ -23,15 +23,15 @@ public class WaterSurface : MonoBehaviour
         Debug.Log(riverON);
         if (riverON)
         {
-            if (rainChange.Rainfall() > 59)
+            if (rainChanger.Rainfall() > 59)
             {
                 transform.Translate(0, 1f * Time.deltaTime, 0);
             }
-            else if (rainChange.Rainfall() > 29)
+            else if (rainChanger.Rainfall() > 29)
             {
                 transform.Translate(0, 0.5f * Time.deltaTime, 0);
             }
-            else if (rainChange.Rainfall() > 5)
+            else if (rainChanger.Rainfall() > 5)
             {
                 transform.Translate(0, 0.2f * Time.deltaTime, 0);
             }

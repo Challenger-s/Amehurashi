@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 242571729}
   - component: {fileID: 242571728}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 251371651}
   - component: {fileID: 251371652}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
   accel: 10
   maxSpeed: 3
   climbTime: 0.4
-  camerController: {fileID: 534669906}
+  cameraController: {fileID: 534669906}
 --- !u!114 &251371651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 400217715}
   - component: {fileID: 400217717}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: River
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5420,7 +5420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103f4c56bfcc4e64791509ca5f2cdf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainChange: {fileID: 1892898561}
+  rainChanger: {fileID: 1892898561}
 --- !u!65 &400217716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5560,7 +5560,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   m_Layer: 0
-  m_Name: Character Camera
+  m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5643,7 +5643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba0cb3407fc4aa46ae05375fd6ebdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1892898555}
+  target: {fileID: 251371644}
 --- !u!1 &873568623
 GameObject:
   m_ObjectHideFlags: 0
@@ -10598,7 +10598,7 @@ GameObject:
   - component: {fileID: 1226475910}
   - component: {fileID: 1226475909}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10690,7 +10690,7 @@ GameObject:
   - component: {fileID: 1424962972}
   - component: {fileID: 1424962971}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: Waterfall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15465,7 +15465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecdb9ad5dc96044dbcd5c4dec32a1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainChange: {fileID: 1892898561}
+  rainChanger: {fileID: 1892898561}
 --- !u!54 &1487225653
 Rigidbody:
   m_ObjectHideFlags: 0

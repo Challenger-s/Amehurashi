@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RainChange : MonoBehaviour
+public class RainChanger: MonoBehaviour
 {
     [SerializeField]
     ParticleSystem particleSystem;

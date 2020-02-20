@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    CharacterMover characterMover;
+    PlayerMover characterMover;
     InputController inputController;
     Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.characterMover = GetComponent<CharacterMover>();
+        this.characterMover = GetComponent<PlayerMover>();
         this.inputController = GetComponent<InputController>();
         this.animator = GetComponent<Animator>();
     }

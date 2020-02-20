@@ -7,7 +7,7 @@ public class River : MonoBehaviour
     ParticleSystem particleSystem;
 
     [SerializeField]
-    RainChange rainChange;
+    RainChanger rainChanger;
 
     bool riverON = false;
 
@@ -26,13 +26,13 @@ public class River : MonoBehaviour
         //Debug.Log(riverON);
         if (riverON)
         {
-            if(rainChange.Rainfall() < 5)
+            if(rainChanger.Rainfall() < 5)
             {
                 emission.rateOverTime = 0;
-            }else if(rainChange.Rainfall() > 29)
+            }else if(rainChanger.Rainfall() > 29)
             {
                 emission.rateOverTime = 20;
-            }else if (rainChange.Rainfall() > 59)
+            }else if (rainChanger.Rainfall() > 59)
             {
                 emission.rateOverTime = 40;
             }

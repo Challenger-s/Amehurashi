@@ -5,7 +5,7 @@ using UnityEngine;
 // 段差をのぼる処理は仮
 // アニメーションができたら変更
 
-public class CharacterMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField]
     float accel = 10f;       // 加速度
@@ -17,7 +17,7 @@ public class CharacterMover : MonoBehaviour
     float climbTime = 0.4f;
 
     [SerializeField]
-    CamerController camerController;
+    CameraController cameraController;
 
     Vector3 endposition;
     Vector3 startPosition;
@@ -75,8 +75,8 @@ public class CharacterMover : MonoBehaviour
         //　入力が行われている時
         if (vertical != 0 || horizontal != 0)
         {
-            this.transform.eulerAngles = new Vector3(0, camerController.GetYRotation(), 0);
-            //Quaternion.LookRotation(new Vector3(0,camerController.GetYRotation(),0));
+            this.transform.eulerAngles = new Vector3(0, cameraController.GetYRotation(), 0);
+            //Quaternion.LookRotation(new Vector3(0,CameraController.GetYRotation(),0));
             Vector3 inputAngle = new Vector3(horizontal, 0, vertical);
             float theta = Mathf.Acos(Vector3.Dot(inputAngle, Vector3.forward) / (inputAngle.magnitude * Vector3.forward.magnitude)) * Mathf.Rad2Deg;
             if(horizontal < 0) { theta *= -1; }
