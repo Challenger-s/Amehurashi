@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Cloud
   - River
+  - Ivy
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - PostProcessing
   - Ground
   - River
-  - 
+  - Waterfall
   - 
   - 
   - 

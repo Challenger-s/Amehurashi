@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class River : MonoBehaviour
+public class RiverStart : MonoBehaviour
 {
     ParticleSystem particleSystem;
 
     [SerializeField]
     RainChanger rainChange;
+
+    [SerializeField]
+    RiverMiddle riverMiddle;
 
     bool riverON = false;
 
@@ -23,7 +26,7 @@ public class River : MonoBehaviour
     void Update()
     {
         var emission = particleSystem.emission;
-        //Debug.Log(riverON);
+
         if (riverON)
         {
             if(rainChange.Rainfall() < 5)
@@ -43,6 +46,18 @@ public class River : MonoBehaviour
             emission.rateOverTime = 0;
         }
     }
+
+    void Flowed(float flow)
+    {
+        var emission = particleSystem.emission;
+        emission.rateOverTime = flow;
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        riverMiddle.Flowed(40);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
