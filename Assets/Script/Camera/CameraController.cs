@@ -39,11 +39,6 @@ public class CameraController : MonoBehaviour
 
     void UpdateCamera()
     {
-        if (Input.GetButtonDown("LB"))
-        {
-            ChangeTarget();
-        }
-
         MoveCameraTarget();
         MoveCamera();
     }
@@ -66,7 +61,7 @@ public class CameraController : MonoBehaviour
         this.transform.eulerAngles = new Vector3(yAngle,xAngle,0);
     }
 
-    void ChangeTarget()
+    public void ChangeTarget()
     {
         if (targetNum + 1 == target.Length)
         {
