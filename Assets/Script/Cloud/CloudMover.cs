@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CloudMover : MonoBehaviour
 {
-    float Xspeed;
-    float Zspeed;
-
+    [SerializeField]
+    float maxSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -17,72 +16,23 @@ public class CloudMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Mover();
-        transform.Translate(this.Xspeed * Time.deltaTime , 0, this.Zspeed * Time.deltaTime);
-
+        Move();
         
-
-        // 減速処理
-        if (this.Xspeed > 0)
-        {
-            this.Xspeed -= 20 * 0.5f * Time.deltaTime;
-            if (this.Xspeed < 0)
-            {
-                this.Xspeed = 0;
-            }
-        }
-        else if (this.Xspeed < 0)
-        {
-            this.Xspeed += 20 * 0.5f * Time.deltaTime;
-            if (this.Xspeed > 0)
-            {
-                this.Xspeed = 0;
-            }
-        }
-
-        if (this.Zspeed > 0)
-        {
-            this.Zspeed -= 20 * 0.5f * Time.deltaTime;
-            if (this.Zspeed < 0)
-            {
-                this.Zspeed = 0;
-            }
-        }
-        else if (this.Zspeed < 0)
-        {
-            this.Zspeed += 20 * 0.5f * Time.deltaTime;
-            if (this.Zspeed > 0)
-            {
-                this.Zspeed = 0;
-            }
-        }
 
     }
 
-    void Mover()
+    void Move()
     {
-
-
         float vertical = Input.GetAxis("Y axis");
-
         float horizontal = Input.GetAxis("X axis");
 
-        // valueの値の範囲が-1から1を超えないように、下限上限を設定
-        horizontal  = Mathf.Clamp(horizontal, -1,  1);
-
-        vertical    = Mathf.Clamp(vertical  , -1,  1);
-
-        this.Xspeed += horizontal * 20 * Time.deltaTime;
-
-        this.Zspeed += vertical * 20 * Time.deltaTime;
-
-        
-
-        // 上限下限を設定 Mathf.Clamp(対象の値, 最小値, 最大値)
-        this.Xspeed = Mathf.Clamp(this.Xspeed, -3, 3);
-
-        this.Zspeed = Mathf.Clamp(this.Zspeed, -3, 3);
-   
+        float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
+        float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
+        transform.Translate(0, 0, speed);        //　移動
     }
 
+    void Rotate()
+    {
+
+    }
 }

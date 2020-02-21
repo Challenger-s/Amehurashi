@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     PlayerMover characterMover;
-    InputController inputController;
+    InputChecker inputController;
     Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         this.characterMover = GetComponent<PlayerMover>();
-        this.inputController = GetComponent<InputController>();
+        this.inputController = GetComponent<InputChecker>();
         this.animator = GetComponent<Animator>();
     }
 
