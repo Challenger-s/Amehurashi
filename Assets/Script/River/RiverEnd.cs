@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RiverMiddle : MonoBehaviour
+public class RiverEnd : MonoBehaviour
 {
     ParticleSystem particleSystem;
-
-    [SerializeField]
-    RiverMiddle riverMiddle;
-
-    [SerializeField]
-    bool riverEnd = false;
-
-    float flow = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,16 +18,5 @@ public class RiverMiddle : MonoBehaviour
     {
         var emission = particleSystem.emission;
         emission.rateOverTime = flow;
-        this.flow = flow;
     }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        if (!riverEnd)
-        {
-            riverMiddle.Flowed(this.flow);
-        }
-    }
-
-
 }

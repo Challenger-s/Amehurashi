@@ -49,7 +49,6 @@ public class Ivy : MonoBehaviour
             {
                 hitRainTimer = 2f;
             }
-            
         }
 
 
