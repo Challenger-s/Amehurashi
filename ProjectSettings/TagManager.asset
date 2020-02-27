@@ -7,6 +7,9 @@ TagManager:
   - Step
   - Ground
   - Cloud
+  - River
+  - Ivy
+  - Enemy
   layers:
   - Default
   - TransparentFX
