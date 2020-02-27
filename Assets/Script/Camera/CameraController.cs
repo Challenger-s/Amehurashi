@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] target;
-    int targetNum;
 
     [SerializeField]
     float yMax;
@@ -19,16 +16,13 @@ public class CameraController : MonoBehaviour
     float yAngle = 0;
     float xAngle = 0;
 
+    GameObject target;
     CameraTargetInfo targetInfo;
-    Transform targetTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        targetNum = 0;
-        targetInfo = target[targetNum].GetComponent<CameraTargetInfo>();
-        targetTransform = target[targetNum].transform;
-        camera.transform.position = new Vector3(0, 0, -targetInfo.cameraToTargetDistance);
+        
     }
 
     // Update is called once per frame
@@ -45,7 +39,7 @@ public class CameraController : MonoBehaviour
 
     void MoveCameraTarget()
     {
-        this.transform.position = targetTransform.position + targetInfo.targetPointFromObject;
+        this.transform.position = target.transform.position + targetInfo.targetPointFromObject;
     }
 
     void MoveCamera()
@@ -61,21 +55,15 @@ public class CameraController : MonoBehaviour
         this.transform.eulerAngles = new Vector3(yAngle,xAngle,0);
     }
 
-    public void ChangeTarget()
+    public void SetTarget(GameObject target)
     {
-        if (targetNum + 1 == target.Length)
-        {
-            targetNum = 0;
-        }
-        else
-        {
-            targetNum++;
-        }
-
-        targetInfo = target[targetNum].GetComponent<CameraTargetInfo>();
-        targetTransform = target[targetNum].transform;
+        this.target = target;
+        targetInfo = target.GetComponent<CameraTargetInfo>();
         xAngle = 0;
         yAngle = 0;
+        this.transform.rotation = Quaternion.identity;
+        this.transform.position = target.transform.position + targetInfo.targetPointFromObject;
+        camera.transform.position = this.transform.position + new Vector3(0,0,-targetInfo.cameraToTargetDistance);
     }
 
     public float GetYRotation()

@@ -17,10 +17,14 @@ public class CloudMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    // TODO:適切な名前に変更
+    public void CloudUpdate()
+    {
         Mover();
         transform.Translate(this.Xspeed * Time.deltaTime , 0, this.Zspeed * Time.deltaTime);
-
-        
 
         // 減速処理
         if (this.Xspeed > 0)
@@ -56,7 +60,6 @@ public class CloudMover : MonoBehaviour
                 this.Zspeed = 0;
             }
         }
-
     }
 
     void Mover()

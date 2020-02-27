@@ -42,6 +42,12 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    // TODO:名前を適切なものに変更
+    public void PlayerUpdate()
+    {
         vertical = Input.GetAxis("Y axis");
 
         horizontal = Input.GetAxis("X axis");
@@ -57,7 +63,6 @@ public class PlayerMover : MonoBehaviour
             Climb();
 
         }
-
     }
 
     /// <summary>
