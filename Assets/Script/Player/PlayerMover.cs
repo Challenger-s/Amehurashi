@@ -51,7 +51,6 @@ public class PlayerMover : MonoBehaviour
         float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
         float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
         transform.Translate(0,0,speed);        //　移動
-        //Debug.Log(this.gameObject.transform.forward);
 
         if (step)
         {
@@ -105,17 +104,23 @@ public class PlayerMover : MonoBehaviour
     {
         if(collision.gameObject.tag == "Step")
         {
-            if(!(collision.gameObject.tag == "Ground"))
-            {
-                startPosition = transform.position;
-                endposition = new Vector3(startPosition.x, startPosition.y + 0.7f, startPosition.z);
+            startPosition = transform.position;
+            endposition = new Vector3(startPosition.x, startPosition.y + 0.7f, startPosition.z);
 
-                startTime = Time.timeSinceLevelLoad;
-                step = true;
-            }           
+            startTime = Time.timeSinceLevelLoad;
+            step = true;
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            DefeatedByEnemy();
         }
     }
 
+    void DefeatedByEnemy()
+    {
+        Debug.Log("You dead");
+    }
 
     /// <summary>
     /// 現在の速度を取得

@@ -39,12 +39,22 @@ public class EnemyController : MonoBehaviour
 
                     if (distanceToRoot < 1f)
                     {
+                        //while (true)
+                        //{
+
+                        //    if(this.navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid)
+                        //    {
+
+                        //    }
+                        //    break;
+                        //}
                         this.rootNum++;
                         if (this.rootNum >= this.root.Length)
                         {
                             this.rootNum = 0;
                         }
                     }
+
 
                     // 経路が作れない状態じゃないなら
                     if (this.navMeshAgent.pathStatus != NavMeshPathStatus.PathInvalid)
