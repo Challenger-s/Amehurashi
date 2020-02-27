@@ -51,7 +51,7 @@ public class PlayerMover : MonoBehaviour
         float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
         float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
         transform.Translate(0,0,speed);        //　移動
-        Debug.Log(this.gameObject.transform.forward);
+        //Debug.Log(this.gameObject.transform.forward);
 
         if (step)
         {

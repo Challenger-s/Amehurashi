@@ -26,8 +26,7 @@ public class RiverStart : MonoBehaviour
     void Update()
     {
         var emission = particleSystem.emission;
-        emission.rateOverTime = 40;
-        /*
+        
         if (riverON)
         {
             if(rainChange.Rainfall() < 5)
@@ -46,7 +45,7 @@ public class RiverStart : MonoBehaviour
         {
             emission.rateOverTime = 0;
         }
-        */
+        
     }
 
     private void OnParticleCollision(GameObject other)

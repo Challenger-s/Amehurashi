@@ -36,7 +36,6 @@ public class RainChanger : MonoBehaviour
 
     public float Rainfall()
     {
-
         return rainfall;
     }
 }

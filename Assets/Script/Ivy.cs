@@ -7,32 +7,17 @@ public class Ivy : MonoBehaviour
     [SerializeField]
     RainChanger rainChanger;
 
-    [SerializeField]
-    GameObject ivyPrefab;
-
     bool hitRain = false;
     float delta = 0;
-    float hitRainTimer;
+    float hitRainTimer = 1f;
 
-    Vector3 startPosition;
-    Vector3 endPosition;
-    Vector3 pastPosition;
-
-    float startTime = 0;
-    float growTime = 1f;
-
+    Vector3 scale;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        pastPosition = startPosition = transform.position;
-        endPosition = new Vector3(startPosition.x, startPosition.y + 2.5f, startPosition.z);
-
-        startTime = Time.timeSinceLevelLoad;
-
-        IvyGenerate();
+        scale = transform.localScale;
     }
 
 
@@ -41,54 +26,40 @@ public class Ivy : MonoBehaviour
         
         if (hitRain)
         {
-            if (rainChanger.Rainfall() < 29)
+            delta += Time.deltaTime;
+
+            if(rainChanger.Rainfall() < 9)
             {
-                delta += Time.deltaTime;
+                delta = 0;
+            }           
+            else if (rainChanger.Rainfall() < 29)
+            {
                 hitRainTimer = 3f;
-            }else if(rainChanger.Rainfall() < 59)
+            }
+            else if (rainChanger.Rainfall() < 59)
             {
                 hitRainTimer = 2f;
             }
-        }
 
+        }
 
         if (delta > hitRainTimer)
         {
 
             Grow();
         }
-        
+
     }
 
     void Grow()
     {
-        var diff = Time.timeSinceLevelLoad - startTime;
-        if (diff > growTime)
+
+        if (scale.y < 6)
         {
-            transform.position = endPosition;
+            transform.localScale = new Vector3(scale.x, scale.y + (3f * Time.deltaTime), scale.z);
+
+            scale = transform.localScale;
         }
-
-        var rate = diff / growTime;
-
-        transform.position = Vector3.Lerp(startPosition, endPosition, rate);
-
-        if(transform.position.y - pastPosition.y > 0.5f)
-        {
-            pastPosition = transform.position;
-            IvyGenerate();
-        }
-
-        
-    }
-
-    void IvyGenerate()
-    {
-        GameObject ivy = Instantiate(ivyPrefab, new Vector3(startPosition.x, startPosition.y - 0.5f, startPosition.z), Quaternion.identity);
-
-        ivy.transform.localRotation = transform.localRotation;
-
-        ivy.transform.parent = transform;
-
     }
 
 
