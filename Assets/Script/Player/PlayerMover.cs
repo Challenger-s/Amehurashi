@@ -52,7 +52,7 @@ public class PlayerMover : MonoBehaviour
 
         horizontal = Input.GetAxis("X axis");
 
-        Rotation();
+        Rotate();
 
         float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
         float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
@@ -68,7 +68,7 @@ public class PlayerMover : MonoBehaviour
     /// <summary>
     /// 回転処理
     /// </summary>
-    void Rotation()
+    void Rotate()
     {
         //float vertical0 = Input.GetAxis("5th axis");
         //float horizontal1 = Input.GetAxis("4th axis");

@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class CloudMover : MonoBehaviour
 {
-    float Xspeed;
-    float Zspeed;
+    [SerializeField]
+    CameraController cameraController;
 
+    [SerializeField]
+    float maxSpeed;
+
+    float vertical;
+    float horizontal;
+
+    Vector2 MoveDistance = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -20,72 +27,40 @@ public class CloudMover : MonoBehaviour
         
     }
 
+    // 雲が毎フレーム行う処理
     // TODO:適切な名前に変更
     public void CloudUpdate()
     {
-        Mover();
-        transform.Translate(this.Xspeed * Time.deltaTime , 0, this.Zspeed * Time.deltaTime);
+        vertical = Input.GetAxis("Y axis");
 
-        // 減速処理
-        if (this.Xspeed > 0)
-        {
-            this.Xspeed -= 20 * 0.5f * Time.deltaTime;
-            if (this.Xspeed < 0)
-            {
-                this.Xspeed = 0;
-            }
-        }
-        else if (this.Xspeed < 0)
-        {
-            this.Xspeed += 20 * 0.5f * Time.deltaTime;
-            if (this.Xspeed > 0)
-            {
-                this.Xspeed = 0;
-            }
-        }
+        horizontal = Input.GetAxis("X axis");
 
-        if (this.Zspeed > 0)
+        Move();
+    }
+
+    void Move()
+    {
+        //　入力が行われている時
+        if (vertical != 0 || horizontal != 0)
         {
-            this.Zspeed -= 20 * 0.5f * Time.deltaTime;
-            if (this.Zspeed < 0)
-            {
-                this.Zspeed = 0;
-            }
-        }
-        else if (this.Zspeed < 0)
-        {
-            this.Zspeed += 20 * 0.5f * Time.deltaTime;
-            if (this.Zspeed > 0)
-            {
-                this.Zspeed = 0;
-            }
+            this.transform.eulerAngles = new Vector3(0, cameraController.GetYRotation(), 0);
+            Vector3 inputAngle = new Vector3(horizontal, 0, vertical);
+            float theta = Mathf.Acos(Vector3.Dot(inputAngle, Vector3.forward) / (inputAngle.magnitude * Vector3.forward.magnitude)) * Mathf.Rad2Deg;
+            if (horizontal < 0) { theta *= -1; }
+            transform.Rotate(0, theta, 0);
+
+            float hypotenuse = Mathf.Sqrt(vertical * vertical + horizontal * horizontal); //　斜辺を取得
+            float speed = hypotenuse * maxSpeed * Time.deltaTime;                  //　移動を1つの変数にまとめる
+            transform.Translate(0, 0, speed);        //　移動
+
+            transform.eulerAngles = Vector3.zero;
+
         }
     }
 
-    void Mover()
+    void Rotate()
     {
 
-
-        float vertical = Input.GetAxis("Y axis");
-
-        float horizontal = Input.GetAxis("X axis");
-
-        // valueの値の範囲が-1から1を超えないように、下限上限を設定
-        horizontal  = Mathf.Clamp(horizontal, -1,  1);
-
-        vertical    = Mathf.Clamp(vertical  , -1,  1);
-
-        this.Xspeed += horizontal * 20 * Time.deltaTime;
-
-        this.Zspeed += vertical * 20 * Time.deltaTime;
-
-        
-
-        // 上限下限を設定 Mathf.Clamp(対象の値, 最小値, 最大値)
-        this.Xspeed = Mathf.Clamp(this.Xspeed, -3, 3);
-
-        this.Zspeed = Mathf.Clamp(this.Zspeed, -3, 3);
-   
     }
 
 }
