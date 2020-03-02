@@ -19,7 +19,7 @@ public class RainChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float vertical = Input.GetAxis("5th axis");
+        float vertical = Input.GetAxis("CameraVertical");
 
         if (Input.GetButton("RB"))
         {

@@ -31,9 +31,9 @@ public class CloudMover : MonoBehaviour
     // TODO:適切な名前に変更
     public void CloudUpdate()
     {
-        vertical = Input.GetAxis("Y axis");
+        horizontal = Input.GetAxis("MoveHorizontal");
 
-        horizontal = Input.GetAxis("X axis");
+        vertical = Input.GetAxis("MoveVertical");
 
         Move();
     }

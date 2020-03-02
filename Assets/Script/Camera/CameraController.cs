@@ -44,8 +44,11 @@ public class CameraController : MonoBehaviour
 
     void MoveCamera()
     {
-        float horizontal = Input.GetAxis("4th axis");
-        float vertical = Input.GetAxis("5th axis");
+        float horizontal = Input.GetAxis("CameraHorizontal");
+        float vertical = Input.GetAxis("CameraVertical");
+        Debug.Log("horizontal:"+ horizontal);
+        Debug.Log(vertical);
+
         yAngle += vertical;
         xAngle += horizontal;
 

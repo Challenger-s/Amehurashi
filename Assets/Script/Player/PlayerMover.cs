@@ -48,9 +48,9 @@ public class PlayerMover : MonoBehaviour
     // TODO:名前を適切なものに変更
     public void PlayerUpdate()
     {
-        vertical = Input.GetAxis("Y axis");
+        vertical = Input.GetAxis("MoveVertical");
 
-        horizontal = Input.GetAxis("X axis");
+        horizontal = Input.GetAxis("MoveHorizontal");
 
         Rotate();
 
